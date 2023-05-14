@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<h1>{{ matter.name }}</h1>
+	<p>{{ matter.coefficient }}</p>
+
+	<h2>Modifier</h2>
+	{{ form(edit) }}
+
+    <h2>Supprimer</h2>
+
+{% endblock %}

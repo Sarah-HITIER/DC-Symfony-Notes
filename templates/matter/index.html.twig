@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MatterController!
+{% endblock %}
+
+{% block body %}
+	<h1>{{'matter.title'|trans}}</h1>
+	<p>{{ 'matter.nb'|trans({'%nb%': matters|length}) }}</p>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Coefficient</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for matter in matters %}
+				<tr>
+					<td>{{ matter.name }}</td>
+					<td>{{ matter.coefficient }}</td>
+					<td>
+						<a href="{{ path('app_matter_show', {'id': matter.id}) }}">{{ 'matter.show'|trans }}</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">{{ 'matter.no_matter'|trans}}</td>
+				</tr>
+			{% endfor %}
+
+		</tbody>
+	</table>
+
+	<h2>{{'matter.add'|trans}}</h2>
+	{{ form(add)}}
+{% endblock %}
